@@ -39,7 +39,7 @@ xvfb-run -a -- ./sharun-aio l -p -v -e -s -k \
 	/usr/lib/libgst* \
 	/usr/lib/gstreamer-*/*.so \
 	/usr/lib/pipewire-0.3/* \
-	/usr/lib/spa-0.2/*/*
+	/usr/lib/spa-0.2/*/* \
         /usr/lib/libglycin*
 rm -f ./sharun-aio
 
