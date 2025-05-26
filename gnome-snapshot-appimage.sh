@@ -37,7 +37,8 @@ chmod +x ./sharun-aio
 xvfb-run -a -- ./sharun-aio l -p -v -e -s -k \
 	/usr/bin/snapshot \
 	/usr/lib/libgst* \
-	/usr/lib/gstreamer-*/*.so
+	/usr/lib/gstreamer-*/*.so \
+	/usr/lib/pipewire-0.3/*
 rm -f ./sharun-aio
 
 # Copy locale manually, as sharun doesn't do that at the moment
