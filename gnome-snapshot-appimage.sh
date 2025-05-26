@@ -40,6 +40,7 @@ xvfb-run -a -- ./sharun-aio l -p -v -e -s -k \
 	/usr/lib/gstreamer-*/*.so \
 	/usr/lib/pipewire-0.3/* \
 	/usr/lib/spa-0.2/*/*
+        /usr/lib/libglycin*
 rm -f ./sharun-aio
 
 # Copy locale manually, as sharun doesn't do that at the moment
@@ -53,6 +54,10 @@ echo 'SHARUN_WORKING_DIR=${SHARUN_DIR}' >> ./.env
 
 # Manually copy snapshot gresource file, since sharun didn't copy it
 cp -rv /usr/share/snapshot/ ./share/
+
+# Manually copy glycin loaders, for gallery to work
+cp -rv /usr/lib/glycin-loaders/ ./shared/lib
+cp -rv /usr/share/glycin-loaders/ ./share
 
 # Deploy Gstreamer binaries manually, as sharun can only handle libraries in /lib/ for now
 echo "Deploying Gstreamer binaries..."
