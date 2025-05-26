@@ -47,8 +47,10 @@ find ./share/locale -type f ! -name '*glib*' ! -name '*snapshot*' -delete
 find ./share/locale -type f 
 # Fix hardcoded path for locale
 sed -i 's|/usr/share|././/share|g' ./shared/bin/snapshot
-
 echo 'SHARUN_WORKING_DIR=${SHARUN_DIR}' >> ./.env 
+
+# Manually copy snapshot gresource file, since sharun didn't copy it
+cp -rv /usr/share/snapshot/ ./share/
 
 # Deploy Gstreamer binaries manually, as sharun can only handle libraries in /lib/ for now
 echo "Deploying Gstreamer binaries..."
