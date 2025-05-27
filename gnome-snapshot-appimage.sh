@@ -55,15 +55,14 @@ echo 'SHARUN_WORKING_DIR=${SHARUN_DIR}' >> ./.env
 # Manually copy snapshot gresource file, since sharun didn't copy it
 cp -rv /usr/share/snapshot/ ./share/
 
+# Deploy Gstreamer binaries manually, as sharun can only handle libraries in /lib/ for now
+echo "Deploying Gstreamer & glycin binaries..."
+cp -vn /usr/lib/gstreamer-*/*  ./shared/lib/gstreamer-* || true
 # Manually copy glycin loaders, for gallery to work
-cp -rv /usr/lib/glycin-loaders/ ./shared/lib
+cp -rv /usr/lib/glycin-loaders/*/ ./shared/lib/
 cp -rv /usr/share/glycin-loaders/ ./share
 
-# Deploy Gstreamer binaries manually, as sharun can only handle libraries in /lib/ for now
-echo "Deploying Gstreamer binaries..."
-cp -vn /usr/lib/gstreamer-*/*  ./shared/lib/gstreamer-* || true
-
-echo "Sharunning Gstreamer bins..."
+echo "Sharunning Gstreamer & glycin bins..."
 bins_to_find="$(find ./shared/lib/ -exec file {} \; | grep -i 'elf.*executable' | awk -F':' '{print $1}')"
 for bin in $bins_to_find; do
 	mv -v "$bin" ./shared/bin && ln ./sharun "$bin"
