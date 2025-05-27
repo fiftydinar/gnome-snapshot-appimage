@@ -59,10 +59,9 @@ cp -rv /usr/share/snapshot/ ./share/
 echo "Deploying Gstreamer & glycin binaries..."
 cp -vn /usr/lib/gstreamer-*/*  ./shared/lib/gstreamer-* || true
 # Manually copy glycin loaders, for gallery to work
-cp -rv /usr/lib/glycin-loaders/*/* ./shared/lib/
+mkdir -p ./shared/lib/glycin-loaders
+cp -rv /usr/lib/glycin-loaders ./shared/lib
 cp -rv /usr/share/glycin-loaders/ ./share
-# Patch glycin config to look in right libraries
-sed -i 's|/usr/lib|././/lib|g' ./share/glycin-loaders/*/*/*
 
 echo "Sharunning Gstreamer & glycin bins..."
 bins_to_find="$(find ./shared/lib/ -exec file {} \; | grep -i 'elf.*executable' | awk -F':' '{print $1}')"
