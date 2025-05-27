@@ -59,7 +59,6 @@ cp -rv /usr/share/snapshot/ ./share/
 echo "Deploying Gstreamer & glycin binaries..."
 cp -vn /usr/lib/gstreamer-*/*  ./shared/lib/gstreamer-* || true
 # Manually copy glycin loaders, for gallery to work
-mkdir -p ./shared/lib/glycin-loaders
 cp -rv /usr/lib/glycin-loaders ./shared/lib
 cp -rv /usr/share/glycin-loaders/ ./share
 
