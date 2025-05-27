@@ -49,7 +49,7 @@ cp -r /usr/share/locale          ./share
 find ./share/locale -type f ! -name '*glib*' ! -name '*snapshot*' -delete
 find ./share/locale -type f 
 # Fix hardcoded path for locale
-sed -i 's|/usr/share|././/share|g' ./shared/bin/snapshot
+c
 echo 'SHARUN_WORKING_DIR=${SHARUN_DIR}' >> ./.env 
 
 # Manually copy snapshot gresource file, since sharun didn't copy it
@@ -61,6 +61,8 @@ cp -vn /usr/lib/gstreamer-*/*  ./shared/lib/gstreamer-* || true
 # Manually copy glycin loaders, for gallery to work
 cp -rv /usr/lib/glycin-loaders/*/* ./shared/lib/
 cp -rv /usr/share/glycin-loaders/ ./share
+# Patch glycin config to look in right libraries
+sed -i 's|/usr/lib|././/lib|g' ./share/glycin-loaders/*/*
 
 echo "Sharunning Gstreamer & glycin bins..."
 bins_to_find="$(find ./shared/lib/ -exec file {} \; | grep -i 'elf.*executable' | awk -F':' '{print $1}')"
