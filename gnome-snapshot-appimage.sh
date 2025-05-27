@@ -62,7 +62,7 @@ cp -vn /usr/lib/gstreamer-*/*  ./shared/lib/gstreamer-* || true
 cp -rv /usr/lib/glycin-loaders/*/* ./shared/lib/
 cp -rv /usr/share/glycin-loaders/ ./share
 # Patch glycin config to look in right libraries
-sed -i 's|/usr/lib|././/lib|g' ./share/glycin-loaders/*/*
+sed -i 's|/usr/lib|././/lib|g' ./share/glycin-loaders/*/*/*
 
 echo "Sharunning Gstreamer & glycin bins..."
 bins_to_find="$(find ./shared/lib/ -exec file {} \; | grep -i 'elf.*executable' | awk -F':' '{print $1}')"
