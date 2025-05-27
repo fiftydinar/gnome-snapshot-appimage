@@ -49,7 +49,7 @@ cp -r /usr/share/locale          ./share
 find ./share/locale -type f ! -name '*glib*' ! -name '*snapshot*' -delete
 find ./share/locale -type f 
 # Fix hardcoded path for locale
-c
+sed -i 's|/usr/share|././/share|g' ./shared/bin/snapshot
 echo 'SHARUN_WORKING_DIR=${SHARUN_DIR}' >> ./.env 
 
 # Manually copy snapshot gresource file, since sharun didn't copy it
