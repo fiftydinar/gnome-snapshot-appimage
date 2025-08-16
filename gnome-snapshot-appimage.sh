@@ -26,6 +26,12 @@ wget --retry-connrefused --tries=30 "$SHARUN" -O ./quick-sharun
 chmod +x ./quick-sharun
 GSK_RENDERER=cairo ./quick-sharun /usr/bin/snapshot
 
+## Manually copy glycin loaders, for gallery to work
+cp -rv /usr/lib/glycin-loaders ./shared/lib
+cp -rv /usr/share/glycin-loaders/ ./share
+## Patch glycin config to look into right libraries
+sed -i 's|/usr/lib|././/lib|g' ./share/glycin-loaders/*/*/*
+
 ## Copy the icon to AppDir's share, as it's not copied by default
 mkdir -p           ./AppDir/share/icons/hicolor/scalable/apps/
 cp -v "$ICON"      ./AppDir/"${ICON#/usr/}"
