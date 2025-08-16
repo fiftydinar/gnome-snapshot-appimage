@@ -27,10 +27,10 @@ chmod +x ./quick-sharun
 GSK_RENDERER=cairo ./quick-sharun /usr/bin/snapshot
 
 ## Manually copy glycin loaders, for gallery to work
-cp -rv /usr/lib/glycin-loaders ./shared/lib
-cp -rv /usr/share/glycin-loaders/ ./share
+cp -rv /usr/lib/glycin-loaders ./AppDir/shared/lib
+cp -rv /usr/share/glycin-loaders/ ./AppDir/share
 ## Patch glycin config to look into right libraries
-sed -i 's|/usr/lib|././/lib|g' ./share/glycin-loaders/*/*/*
+sed -i 's|/usr/lib|././/lib|g' ./AppDir/share/glycin-loaders/*/*/*
 
 ## Copy the icon to AppDir's share, as it's not copied by default
 mkdir -p           ./AppDir/share/icons/hicolor/scalable/apps/
