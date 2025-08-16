@@ -49,6 +49,9 @@ find ./AppDir/share/locale -type f ! -name '*glib*' ! -name '*snapshot*' -delete
 ## Force use of cairo backend
 echo "GSK_RENDERER=cairo" >> ./AppDir/.env
 
+## Regenerate lib dir list for sharun, as we copy new libs
+./quick-sharun l -g
+
 # MAKE APPIMAGE WITH URUNTIME
 wget --retry-connrefused --tries=30 "$URUNTIME" -O ./uruntime2appimage
 chmod +x ./uruntime2appimage
