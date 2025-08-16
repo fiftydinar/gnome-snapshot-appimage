@@ -16,6 +16,7 @@ export OUTNAME="$PACKAGE"-"$VERSION"-anylinux-"$ARCH".AppImage
 export DESKTOP=/usr/share/applications/org.gnome.Snapshot.desktop
 export ICON=/usr/share/icons/hicolor/scalable/apps/org.gnome.Snapshot.svg
 export PATH_MAPPING_RELATIVE=1 # GTK applications are usually hardcoded to look into /usr/share, especially noticeable in non-working locale
+export DEPLOY_PIPEWIRE=1
 export DEPLOY_LOCALE=1
 
 # Prepare AppDir
@@ -24,7 +25,7 @@ mkdir -p ./AppDir/shared/lib
 # DEPLOY ALL LIBS
 wget --retry-connrefused --tries=30 "$SHARUN" -O ./quick-sharun
 chmod +x ./quick-sharun
-GSK_RENDERER=cairo ./quick-sharun /usr/bin/snapshot
+GSK_RENDERER=cairo ./quick-sharun /usr/bin/snapshot /usr/lib/libgst* /usr/lib/gstreamer-*/*.so /usr/lib/libglycin*
 
 ## Manually copy glycin loaders, for gallery to work
 cp -rv /usr/lib/glycin-loaders ./AppDir/shared/lib
