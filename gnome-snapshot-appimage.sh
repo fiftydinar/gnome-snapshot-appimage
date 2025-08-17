@@ -27,7 +27,7 @@ wget --retry-connrefused --tries=30 "$SHARUN" -O ./quick-sharun
 chmod +x ./quick-sharun
 GSK_RENDERER=cairo ./quick-sharun /usr/bin/snapshot /usr/lib/libgst* /usr/lib/gstreamer-*/*.so /usr/lib/libglycin*
 
-## Manually copy glycin loaders, for gallery to work
+## Manually copy glycin loaders, for camera to work, gallery doesn't work yet
 cp -rv /usr/lib/glycin-loaders ./AppDir/shared/lib
 cp -rv /usr/share/glycin-loaders/ ./AppDir/share
 ## Patch glycin config to look into right libraries
