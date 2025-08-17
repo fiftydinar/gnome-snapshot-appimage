@@ -33,10 +33,6 @@ cp -rv /usr/share/glycin-loaders/ ./AppDir/share
 ## Patch glycin config to look into right libraries
 sed -i 's|/usr/lib|././/lib|g' ./AppDir/share/glycin-loaders/*/*/*
 
-## Copy the icon to AppDir's share, as it's not copied by default
-mkdir -p           ./AppDir/share/icons/hicolor/scalable/apps/
-cp -v "$ICON"      ./AppDir/"${ICON#/usr/}"
-
 # Patch StartupWMClass to work on X11
 # Doesn't work when ran in Wayland, as it's 'org.gnome.Snapshot' instead.
 # It needs to be manually changed by the user in this case.
