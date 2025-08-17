@@ -33,9 +33,9 @@ cp -rv /usr/share/glycin-loaders/ ./AppDir/share
 ## Patch glycin config to look into right libraries
 sed -i 's|/usr/lib|././/lib|g' ./AppDir/share/glycin-loaders/*/*/*
 
-# Patch StartupWMClass to work on X11
-# Doesn't work when ran in Wayland, as it's 'org.gnome.Snapshot' instead.
-# It needs to be manually changed by the user in this case.
+## Patch StartupWMClass to work on X11
+## Doesn't work when ran in Wayland, as it's 'org.gnome.Snapshot' instead.
+## It needs to be manually changed by the user in this case.
 sed -i '/^\[Desktop Entry\]/a\
 StartupWMClass=snapshot
 ' ./AppDir/*.desktop
