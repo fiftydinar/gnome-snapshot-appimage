@@ -15,7 +15,7 @@ export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}
 export OUTNAME="$PACKAGE"-"$VERSION"-anylinux-"$ARCH".AppImage
 export DESKTOP=/usr/share/applications/org.gnome.Snapshot.desktop
 export ICON=/usr/share/icons/hicolor/scalable/apps/org.gnome.Snapshot.svg
-export PATH_MAPPING_RELATIVE=1 # GTK applications are usually hardcoded to look into /usr/share, especially noticeable in non-working locale
+export PATH_MAPPING_RELATIVE=1 # GTK applications are usually hardcoded to look into /usr/share, especially noticeable in non-working locale, looking for better solution which doesn't change working directory
 export DEPLOY_PIPEWIRE=1
 export DEPLOY_LOCALE=1
 
