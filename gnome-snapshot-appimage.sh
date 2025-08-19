@@ -31,9 +31,7 @@ chmod +x ./quick-sharun
 cp -rv /usr/lib/glycin-loaders ./AppDir/shared/lib
 cp -rv /usr/share/glycin-loaders/ ./AppDir/share
 ## Patch glycin config to look into right libraries
-## Doesn't work at the moment, waiting for quick-sharun fix, as this needs PATH_MAPPING_RELATIVE, which is incompatible with the needed & more preferred PATH_MAPPING_HARDCODED
-sed -i 's|/usr/lib|././/lib|g' ./AppDir/share/glycin-loaders/*/*/*
-echo 'SHARUN_WORKING_DIR=${SHARUN_DIR}' >> ./AppDir/.env
+sed -i 's|/usr/lib/glycin-loaders/1+/||g' ./AppDir/share/glycin-loaders/*/*/*
 
 ## Further debloat locale
 find ./AppDir/share/locale -type f ! -name '*glib*' ! -name '*snapshot*' -delete
