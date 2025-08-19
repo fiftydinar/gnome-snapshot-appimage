@@ -33,15 +33,13 @@ cp -rv /usr/share/glycin-loaders/ ./AppDir/share
 ## Patch glycin config to look into right libraries
 ## Doesn't work at the moment, waiting for quick-sharun fix, as this needs PATH_MAPPING_RELATIVE, which is incompatible with the needed & more preferred PATH_MAPPING_HARDCODED
 sed -i 's|/usr/lib|././/lib|g' ./AppDir/share/glycin-loaders/*/*/*
+echo 'SHARUN_WORKING_DIR=${SHARUN_DIR}' >> ./AppDir/.env
 
 ## Further debloat locale
 find ./AppDir/share/locale -type f ! -name '*glib*' ! -name '*snapshot*' -delete
 
 ## Set gsettings to save to keyfile, instead to dconf
 echo "GSETTINGS_BACKEND=keyfile" >> ./AppDir/.env
-
-## Regenerate lib dir list for sharun, as we copy new libs
-./quick-sharun l -g
 
 # MAKE APPIMAGE WITH URUNTIME
 wget --retry-connrefused --tries=30 "$URUNTIME" -O ./uruntime2appimage
