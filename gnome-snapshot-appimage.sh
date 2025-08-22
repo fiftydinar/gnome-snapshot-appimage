@@ -17,7 +17,6 @@ export DESKTOP=/usr/share/applications/org.gnome.Snapshot.desktop
 export ICON=/usr/share/icons/hicolor/scalable/apps/org.gnome.Snapshot.svg
 export DEPLOY_PIPEWIRE=1
 export DEPLOY_OPENGL=1
-export DEPLOY_VULKAN=1
 export DEPLOY_GSTREAMER=1
 export STARTUPWMCLASS=snapshot # For Wayland, this is 'org.gnome.Snapshot', so this needs to be changed in desktop file manually by the user in that case until some potential automatic fix exists for this
 
